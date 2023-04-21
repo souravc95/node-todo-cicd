@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    tools{
+        maven 'maven-3.9.1'
+    }
+    stages{
+        
+        stage('Build Maven'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://https://github.com/Rabi8429/node-todo-cicd.git']])
+
+                sh 'mvn clean install'
+
+            }
+        }
+        stage('Build docker image'){
+            steps{
+                script{ 
+                    sh'docker build -t rabi4450/node-todo-application.'
+
+                }
+            }
+        }
+        stage('Push image to docker hub'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+
+}
+            
+                    sh 'docker login -u rabi4450 -p ${dockerhubpwd}'
+
+
+                    sh 'docker push rabi4450/node-todo-application' 
+                }
+            }
+        }
+      
+
+    }
+
+}
