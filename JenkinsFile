@@ -7,9 +7,10 @@ pipeline {
         
         stage('Build Maven'){
             steps{
-                git 'https://github.com/Rabi8429/node-todo-cicd.git'
-                
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                git 'https://https://github.com/Rabi8429/node-todo-cicd.git'
+
+                sh sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
             }
         }
         stage('Build docker image'){
