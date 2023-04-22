@@ -15,7 +15,7 @@ pipeline {
         stage('Push'){
             steps{
                 withCredentials([string(credentialsId: 'rabi4450', variable: 'dockerhubpwd')]){
-        	     sh "docker login -u ${env.rabi4450} -p ${env.rabi4450}"
+        	     sh "docker login -u rabi4450} -p ${rabi4450}"
                  sh 'docker push rabi4450/no-todo-test:latest'
                 }
             }
