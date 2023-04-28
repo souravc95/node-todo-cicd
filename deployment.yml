@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-to-do
+  labels:
+    app: node-to-do
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-to-do
+  template:
+    metadata:
+      labels:
+        app: node-to-do
+    spec:
+      containers:
+      - name: node-to-do
+        image: rabi4450/node-todo-test
+        ports:
+        - containerPort: 8080
