@@ -18,4 +18,4 @@ spec:
       - name: node-to-do
         image: rabi4450/node-todo-test
         ports:
-        - containerPort: 8081
+        - containerPort: 8000
